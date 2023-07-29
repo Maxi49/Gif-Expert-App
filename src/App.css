@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-custom-gradient {
+  background-image: linear-gradient(to right, theme('colors.gray.800'), theme('colors.gray.400'), theme('colors.white'));
+}
+body {
+  @apply bg-neutral-950;
+  @apply w-96;
+  @apply flex flex-row justify-start w-full min-h-screen p-12 ;
+  @apply flex justify-center
+}
