@@ -15,7 +15,7 @@ export const useCounter = (initialValue = 1) => {
         setCounter( counter - counter );
     }
     const handleDecrement = () => {
-        if(counter - randomValues.decrement <= 0)return;
+        if(counter - randomValues.decrement < 0)return;
         randomValues.decrement 
         ? setCounter(counter - randomValues.decrement)
         : setCounter(counter - initialValue);
@@ -41,5 +41,6 @@ export const useCounter = (initialValue = 1) => {
         handleApplyReset,
         initialValue,
         inputValue,
+        setRandomValues
     }
 }
