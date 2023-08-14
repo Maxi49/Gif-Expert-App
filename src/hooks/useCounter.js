@@ -2,42 +2,44 @@ import { useRef, useState } from "react"
 
 export const useCounter = (initialValue = 1) => {
     const inputValue = useRef(initialValue)
-    const [randomValue, setRandomValue] = useState(0)
-    const [counter, setCounter] = useState( 0 );
+    const [randomValues, setRandomValues] = useState({increment: 0, decrement: 0})
+    //creamos un objeto dentro del valor del state para manejar el incremento y decremento por valor individual
+    const [counter, setCounter] = useState(0);
+    
     const handleIncrement = () => {
-        randomValue 
-        ? setCounter(counter + randomValue)
+        randomValues.increment 
+        ? setCounter(counter + randomValues.increment)
         : setCounter(counter + initialValue)
     }
     const handleReset = () => {
         setCounter( counter - counter );
     }
     const handleDecrement = () => {
-        if(counter === 0)return;
-        randomValue 
-        ? setCounter(counter - randomValue)
+        if(counter - randomValues.decrement <= 0)return;
+        randomValues.decrement 
+        ? setCounter(counter - randomValues.decrement)
         : setCounter(counter - initialValue);
     } 
     const handleApplyIncrement = () => {
-        setRandomValue(parseInt(inputValue.current.value))
-        //si soltamos solo el valor estariamos "asginando" el valor a la constante
+        setRandomValues({...randomValues, increment: parseInt(inputValue.current.value)})
+        inputValue.current.value = ''
     }
     const handleApplyDecrement = () => {
-        setRandomValue(parseInt(inputValue.current.value))
+        setRandomValues({...randomValues, decrement: parseInt(inputValue.current.value)})
+        inputValue.current.value = ''
     }
     const handleApplyReset = () => {
-        setRandomValue(initialValue)
+        setRandomValues({increment: initialValue, decrement: initialValue})
     }
-    
     return {
         counter,
         handleIncrement,
         handleReset,
         handleDecrement,
-        inputValue,
         handleApplyIncrement,
         handleApplyDecrement,
+        handleApplyReset,
         initialValue,
-        handleApplyReset
+        inputValue,
     }
 }
