@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { useCounter } from '../hooks/useCounter'
+import useCustom from '../hooks/useCustom'
 
 
 export const CounterHook = () => {
+    const customValue = useRef(0)
 
-    const { counter,handleIncrement,handleReset,handleDecrement,handleApplyDecrement,handleApplyIncrement,handleApplyReset,initialValue,inputValue} = useCounter()
+    const { counter,handleIncrement,handleReset,handleDecrement,initialValue,inputValue} = useCounter(1)
+    const {handleApplyDecrement,handleApplyIncrement,handleApplyReset } = useCustom(customValue,handleIncrement)
     return (
     <>
         <h1>CounterHook: {counter} </h1>
@@ -14,7 +17,7 @@ export const CounterHook = () => {
         <button className='btn btn-primary' onClick={()=> handleDecrement(2)}>-1</button>
         <h2>Custom Value</h2>
         <div className='input-group mb-3'>
-            <input type="text" ref={inputValue}/>
+            <input type="text" ref={customValue}/>
         </div>
         <button className='btn btn-secondary' onClick={handleApplyIncrement} >Apply to Increment</button>
         <button className='btn btn-secondary' onClick={handleApplyDecrement} >Apply to decrement</button>
