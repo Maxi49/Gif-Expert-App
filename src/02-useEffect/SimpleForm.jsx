@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, useFormik } from 'formik'
 
 export const SimpleForm = () => {
+
+    useEffect(() => {
+        console.log('Holis')
+    })
+
     const formik = useFormik({
         initialValues : {
             username : '',

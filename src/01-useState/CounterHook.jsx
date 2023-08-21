@@ -59,7 +59,7 @@ export const CounterHook = () => {
         <button className='btn btn-primary' onClick={handleReset} >reset</button>
         <button className='btn btn-primary' onClick={handleDecrement}>{buttonValue.buttonValueDecrement}
         </button>
-        
+
         <form onSubmit={formik.handleSubmit}>
             <label className='h3 mb-3 mt-3' htmlFor="customValue">
                 CustomValue
