@@ -41,8 +41,8 @@ export const CounterHook = () => {
     )
     const formik = useFormik({
         initialValues: {
-          customValue: '',
-          action:''
+            customValue: '',
+            action:''
         },
         onSubmit: values => {
             if(value === 'increment'){
@@ -68,9 +68,9 @@ export const CounterHook = () => {
                 CustomValue
             </label>
             <input type="text" id='customValue' name='customValue' onChange={formik.handleChange} value={formik.values.customValue}/>
-            <button type="submit" name='action' onClick={setIncrement} >Apply value to increment</button>
-            <button type="submit" name='action' onClick={setDecrement} >Apply value to decrement</button>
-            <button type="submit" name='action' onClick={setReset} >reset Custom Values</button>
+            <button type="submit" name='action' onClick={setIncrement} className='btn btn-primary' >Apply value to increment</button>
+            <button className='btn btn-primary' type="submit" name='action' onClick={setDecrement} >Apply value to decrement</button>
+            <button className='btn btn-primary' type="submit" name='action' onClick={setReset} >reset Custom Values</button>
         </form>
     </>
 
