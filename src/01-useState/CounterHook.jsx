@@ -31,7 +31,6 @@ export const CounterHook = () => {
             const submitter = document.activeElement
             if(submitter.name === 'incrementButton'){
                 if(values.customValue > 500)return
-                else if(values.customValue <= 0)return
                 else
                 {
                     setCustomValue({...userCustomValue,customIncrement : parseInt(values.customValue)})
@@ -39,8 +38,7 @@ export const CounterHook = () => {
                 }
             }
             else if(submitter.name === 'decrementButton'){
-                if(values.customValue > 500)return
-                else if(values.customValue <= 0)return
+                if(values.customValue <= 0)return
                 setCustomValue({...userCustomValue, customDecrement : parseInt(values.customValue)})
                 setButtonValue({...buttonValue,buttonValueDecrement : `-${values.customValue}`})
             }
